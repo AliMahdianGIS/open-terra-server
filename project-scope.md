@@ -108,13 +108,15 @@ Goal: uploaded data lands in the correct place automatically, the same way it do
 
 ## Acceptance test for v1
 
-Use the New York City OBJ dataset:
+The system must work for city data from anywhere in the world, so the acceptance test does not depend on one dataset. It uses a **reference test corpus**: a set of openly licensed city datasets that covers different coordinate systems (UTM, State Plane, national grids), linear units (meters, US and international feet), vertical datums, hemispheres and latitudes, file structures and sizes. The New York City OBJ dataset can be one entry. The corpus is defined in the implementation plan and grows when new data fails.
+
+For **every** dataset in the corpus:
 
 1. Upload the dataset.
-2. It is placed correctly on the map without manual positioning (coordinate system from `.prj`/EPSG, units in feet handled).
+2. It is placed correctly on the map without manual positioning (coordinate system from `.prj`/EPSG, units and vertical datum handled).
 3. It publishes as 3D Tiles and displays correctly in the built-in CesiumJS viewer, with attributes on click.
-4. It publishes as an I3S SceneServer service and an SLPK, and both load in ArcGIS Pro in the same location, with the same attributes, as the original OBJ.
-5. Performance is acceptable at full city scale (target numbers to be defined).
+4. It publishes as an I3S SceneServer service and an SLPK, and both load in ArcGIS Pro in the same location, with the same attributes, as the original data.
+5. Performance is acceptable at full city scale (target numbers to be defined, relative to input size).
 
 ## Out of scope for v1
 
@@ -140,8 +142,8 @@ Use the New York City OBJ dataset:
 
 ## Open questions
 
-1. Is there a `.prj` (or `.xml`) file next to the NYC OBJ files? This confirms the georeferencing approach.
-2. What fields does ArcGIS Pro show in the attribute table for the NYC OBJ? Only an ID/name per object, or real fields (height, building ID)? Real fields may come from a sidecar file that must also be supported.
-3. Tech stack: which backend/frontend languages? Most conversion tools are Node.js (loaders.gl, 3d-tiles-tools) or C# (Obj2Tiles).
+1. Which georeferencing sidecars (`.prj`, `.xml`, others) appear in real-world city datasets, and in which forms (ESRI WKT, OGC WKT)? This confirms the georeferencing approach.
+2. Where do feature attributes come from in real-world city OBJ datasets? Only an ID/name per object, or real fields (height, building ID) from sidecar files that must also be supported?
+3. Tech stack: the backend is **Django** (decided). Conversion tools in Node.js (loaders.gl, 3d-tiles-tools) and C# (Obj2Tiles) run as external processes from the worker. Frontend: React + CesiumJS (proposed).
 4. Solo project or open to contributors from the start?
 5. Performance targets for the acceptance test (processing time, viewer frame rate, tile load times).
