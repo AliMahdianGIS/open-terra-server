@@ -32,7 +32,7 @@ The backend is **Django** (decided). The other choices shape the plan, and Phase
 | App server | **Gunicorn** (WSGI) behind nginx | Simple and proven. Job progress uses polling first; ASGI/SSE can be added later if needed. |
 | Reprojection | **Native PROJ** (through pyproj) with its full EPSG database and transformation grids | Needed for worldwide data: every EPSG CRS, ESRI and OGC WKT, datum shifts that need grid files, and vertical datums / geoid models. |
 | Frontend | **React + Vite + CesiumJS** | CesiumJS is required. React is common and contributor-friendly. TypeScript types for the API are generated from the OpenAPI schema (`openapi-typescript`). |
-| Repo layout | `backend/` (Django project; the same code base runs as API and Celery worker), `tools/geometry/` (Node.js geometry toolkit), `web/` (React app), `docker/` (images and Compose files) | One Python code base for API and worker; no shared-types package needed thanks to OpenAPI generation. |
+| Repo layout | `backend/` (Django project; the same code base runs as API and Celery worker), `tools/geometry/` (Node.js geometry toolkit), `frontend/` (React app), `docker/` (images and Compose files) | One Python code base for API and worker; no shared-types package needed thanks to OpenAPI generation. |
 | License | AGPL-3.0 (pending the license check in P0.6) | See the scope. |
 
 ---
@@ -66,7 +66,7 @@ The backend is **Django** (decided). The other choices shape the plan, and Phase
 
 **Goal:** A running skeleton: API, worker, web app and database start with one `docker compose up`.
 
-- [ ] **P1.1 Set up the repository.** `backend/` with a Django project and dependency management (uv or Poetry), Ruff + mypy (django-stubs); `web/` and `tools/geometry/` as pnpm workspaces with TypeScript, ESLint/Prettier; pre-commit hooks.
+- [ ] **P1.1 Set up the repository.** `backend/` with a Django project and dependency management (uv or Poetry), Ruff + mypy (django-stubs); `frontend/` and `tools/geometry/` as pnpm workspaces with TypeScript, ESLint/Prettier; pre-commit hooks.
 - [ ] **P1.2 Set up CI.** GitHub Actions for lint, type checks, pytest (pytest-django, against a PostGIS service container), web tests and Docker image builds on each PR.
 - [ ] **P1.3 Create the Django project skeleton.** Settings split by environment and loaded from env vars (django-environ), apps `accounts`, `layers`, `uploads`, `processing`, `services` (3D Tiles + SceneServer); DRF with consistent error format; drf-spectacular schema and Swagger UI; structured logging; health check endpoint.
 - [ ] **P1.4 Create the data model.** GeoDjango on PostGIS. Initial models: custom `User` (set up from day one, as Django recommends), `Organization`, `Layer`, `LayerVersion`, `Job`. Django migrations.
