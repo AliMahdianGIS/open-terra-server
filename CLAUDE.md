@@ -26,6 +26,7 @@ The system must work for city data from anywhere. Never hard-code a CRS, units, 
 |---|---|
 | `backend/` | Django + DRF API. `config/` holds settings and URLs; apps sit beside it (`core/` for now) |
 | `frontend/` | React + Vite + TypeScript app with CesiumJS |
+| `docs/` | Project docs, such as the reference test corpus ([test-corpus.md](docs/test-corpus.md)) |
 
 Planned folders that don't exist yet: `tools/geometry/` (Node.js glTF toolkit) and `docker/`.
 
@@ -67,7 +68,7 @@ Before reporting backend work as done, run `uv run pytest` and `uv run ruff chec
 
 ## Git
 
-- Work on feature branches (currently `feat/phase-1-foundation`). `main` is the PR target.
+- Work on feature branches (for example `feat/<task-id>-<topic>`). `main` is the PR target.
 - Commit only when asked.
 - Never commit `.env` files, `backend/db.sqlite3`, `.venv/` or `node_modules/`.
 - Commit `backend/uv.lock` and `frontend/package-lock.json`.
