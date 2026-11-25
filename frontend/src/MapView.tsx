@@ -31,12 +31,21 @@ export function MapView() {
       .then((token) => {
         if (cancelled || !containerRef.current) return;
 
+        // Hide all of Cesium's built-in widgets; the app will provide its own controls.
+        // The credit/attribution area stays: OSM and Cesium ion require it.
         const common = {
           animation: false,
           timeline: false,
           baseLayerPicker: false,
-          sceneModePicker: true,
+          geocoder: false,
+          homeButton: false,
+          sceneModePicker: false,
+          projectionPicker: false,
           navigationHelpButton: false,
+          fullscreenButton: false,
+          vrButton: false,
+          infoBox: false,
+          selectionIndicator: false,
         };
 
         if (token) {
@@ -48,7 +57,6 @@ export function MapView() {
         } else {
           viewer = new Viewer(containerRef.current, {
             ...common,
-            geocoder: false, // the default geocoder needs an Ion token
             baseLayer: new ImageryLayer(
               new OpenStreetMapImageryProvider({ url: "https://tile.openstreetmap.org/" }),
             ),
