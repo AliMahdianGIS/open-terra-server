@@ -18,6 +18,8 @@ desktop.ini
 
 # Local data and generated output (uploads, tiles, SLPKs)
 data/
+# ...but not the bundled data that Agent Skills ship with
+!.claude/skills/**/data/
 uploads/
 output/
 *.slpk
