@@ -1,4 +1,5 @@
 import {
+  Credit,
   EllipsoidTerrainProvider,
   ImageryLayer,
   Ion,
@@ -62,6 +63,19 @@ export function MapView() {
             ),
             terrainProvider: new EllipsoidTerrainProvider(),
           });
+          // No Cesium ion content is used here, so the ion logo isn't required.
+          // The OpenStreetMap text credit next to it stays visible.
+          const logo = viewer.cesiumWidget.creditContainer.querySelector<HTMLElement>(
+            ".cesium-credit-logoContainer",
+          );
+          if (logo) logo.style.display = "none";
+          // A plain-text credit in place of the logo.
+          viewer.creditDisplay.addStaticCredit(
+            new Credit(
+              '<a href="https://cesium.com/platform/cesiumjs/" target="_blank" rel="noopener noreferrer">Powered by CesiumJS</a>',
+              true,
+            ),
+          );
         }
       });
 
