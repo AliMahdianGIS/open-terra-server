@@ -24,7 +24,7 @@ The system must work for city data from anywhere. Never hard-code a CRS, units, 
 
 | Path | Contents |
 |---|---|
-| `backend/` | Django + DRF API. `config/` holds settings and URLs; apps sit beside it (`core/` for now) |
+| `backend/` | Django + DRF API. `config/` holds settings and URLs; all apps live in `apps/` (e.g. `apps/core/`, `apps/conversion/`), registered as `apps.<name>` |
 | `frontend/` | React + Vite + TypeScript app with CesiumJS |
 | `docs/` | Project docs, such as the reference test corpus ([test-corpus.md](docs/test-corpus.md)) |
 
