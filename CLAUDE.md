@@ -9,7 +9,7 @@ Open Terra Server is a self-hostable platform for publishing city-scale 3D layer
 - [project-scope.md](project-scope.md): what v1 includes and excludes.
 - [implementation-plan.md](implementation-plan.md): phases and tasks. Task IDs like `P1.7` are used in commits and issues.
 
-Current state: an early Phase 1 skeleton. There is a Django API with `/api/health/` and `/api/map-config/`, and a React + CesiumJS globe. Nothing else is built yet.
+Current state: early Phase 1 (convert formats to 3D Tiles). There is a Django API with `/api/health/` and `/api/map-config/`, a React + CesiumJS globe, and an empty `apps.conversion` app. Nothing else is built yet.
 
 ## Scope discipline
 
@@ -54,7 +54,7 @@ Before reporting backend work as done, run `uv run pytest` and `uv run ruff chec
 ## Conventions
 
 - **Backend settings** come from environment variables via django-environ (`backend/.env`; see `.env.example`). Never hard-code secrets or tokens.
-- **Database:** SQLite is the default until PostGIS arrives in P1.4. Don't write SQLite-specific code.
+- **Database:** SQLite is the default until PostGIS arrives in P2.1. Don't write SQLite-specific code.
 - **API:** DRF views get `extend_schema` annotations so the OpenAPI schema at `/api/schema/` stays accurate. The frontend will generate its API types from that schema.
 - **Python:** target 3.12+, type hints on functions, Ruff rules from `pyproject.toml` (line length 100).
 - **Frontend:** strict TypeScript, function components and hooks. Cesium's static files are copied by `vite-plugin-static-copy` and found through `CESIUM_BASE_URL`; keep that setup when touching `vite.config.ts`.

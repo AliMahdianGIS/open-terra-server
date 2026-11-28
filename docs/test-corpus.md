@@ -1,6 +1,6 @@
 # Reference test corpus
 
-Candidate datasets for the reference test corpus (task **P0.1** in [implementation-plan.md](../implementation-plan.md)). The corpus must cover many coordinate systems, units, height systems, locations, file structures and sizes. No single dataset is the target; every dataset in the corpus must pass.
+Candidate datasets for the reference test corpus (task **P1.1** in [implementation-plan.md](../implementation-plan.md)). The corpus must cover many coordinate systems, units, height systems, locations, file structures and sizes. No single dataset is the target; every dataset in the corpus must pass.
 
 **Status:** candidates only. Nothing has been downloaded or tested yet. Links and facts were checked on **2026-11-25** through the official pages and catalogue records cited in each entry.
 
@@ -47,7 +47,7 @@ Licenses must be rechecked on the download page before any data is added to the 
   - many small tiled OBJs
   - one object per building
   - untextured models
-  - a ready-made 3D Tiles tileset to test **3D Tiles import** (P7.2)
+  - a ready-made 3D Tiles tileset to test **3D Tiles input** (P1.9)
   - the full country as a **very large** dataset
 
 ## 2. Helsinki 3D city models (Finland)
@@ -87,7 +87,7 @@ Note: the hri.fi pages block automated access. The facts above come from the avo
 - **What it covers in the corpus:**
   - **southern hemisphere**
   - many tiled, textured OBJs, with an origin offset taken from a sidecar file (`metadata.xml`, not a `.prj`)
-  - an existing SLPK for **SLPK import** tests (P7.3)
+  - an existing SLPK for **SLPK input** tests (P1.8)
   - a large dataset
 
 ## 4. Montréal Bâtiments 3D 2020 (Canada)
@@ -182,8 +182,8 @@ This is the dataset the scope mentions. Per the design principle, it is one entr
   - glTF samples using `EXT_mesh_features` and `EXT_structural_metadata`
 - **License:** no repository-wide license confirmed. Some tilesets have usage notes in their own README. ? Check each tileset folder.
 - **What it covers in the corpus:**
-  - small, fast **CI** fixtures for 3D Tiles import (P7.2) and validation (P3.13)
-  - reference output for feature IDs and metadata (P3.12)
+  - small, fast **CI** fixtures for 3D Tiles input (P1.9) and validation (P1.11)
+  - reference output for feature IDs and metadata (P4.4)
 
 ---
 
@@ -194,9 +194,9 @@ These can be viewed but not downloaded, cached or re-served under their terms, s
 - **Google Photorealistic 3D Tiles**
 - **Cesium OSM Buildings** and **Cesium ion's Japan 3D Buildings** (built from PLATEAU). Use the PLATEAU source data instead.
 
-## Coverage against P0.1
+## Coverage against P1.1
 
-| P0.1 requirement | Covered by | Gap |
+| P1.1 requirement | Covered by | Gap |
 |---|---|---|
 | UTM | Berlin | — |
 | US State Plane | NYC ? | Confirm NYC's CRS |
