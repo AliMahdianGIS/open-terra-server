@@ -11,6 +11,7 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, ["localhost", "127.0.0.1"]),
     CORS_ALLOWED_ORIGINS=(list, ["http://localhost:5173"]),
     CESIUM_ION_TOKEN=(str, ""),
+    OBJ2TILES_PATH=(str, ""),
 )
 environ.Env.read_env(BASE_DIR / ".env")
 
@@ -94,3 +95,6 @@ SPECTACULAR_SETTINGS = {
 
 # Optional. Without it the web map falls back to OpenStreetMap imagery and no terrain.
 CESIUM_ION_TOKEN = env("CESIUM_ION_TOKEN")
+
+# Converter tools. Empty means "find it on PATH".
+OBJ2TILES_PATH = env("OBJ2TILES_PATH")

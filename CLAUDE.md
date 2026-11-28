@@ -9,7 +9,7 @@ Open Terra Server is a self-hostable platform for publishing city-scale 3D layer
 - [project-scope.md](project-scope.md): what v1 includes and excludes.
 - [implementation-plan.md](implementation-plan.md): phases and tasks. Task IDs like `P1.7` are used in commits and issues.
 
-Current state: early Phase 1 (convert formats to 3D Tiles). There is a Django API with `/api/health/` and `/api/map-config/`, a React + CesiumJS globe, and an empty `apps.conversion` app. Nothing else is built yet.
+Current state: early Phase 1 (convert formats to 3D Tiles). There is a Django API with `/api/health/` and `/api/map-config/`, a React + CesiumJS globe, and `apps.conversion` with a `convert` management command for OBJ → 3D Tiles (Obj2Tiles, path from `OBJ2TILES_PATH`). Nothing else is built yet.
 
 ## Scope discipline
 
